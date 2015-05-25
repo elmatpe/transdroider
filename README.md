@@ -1,51 +1,14 @@
 # Transdroider
 
-A couple of **Python** scripts: one for create an **MS Excel** book from every strings.xml file in your Android project. Other to create all the res/values-xx structure and strings.xml files from an MS Excel book. For those not using **xliff** or **gettext**...
+A couple of **Python** scripts: 
+i18n_excel_from_xml: creats an **MS Excel** book from every strings.xml file in your Android project. In case of having more than one strings file in your project they have to be named strings*.xml for the script to recognize them. 
+i18n_xml_from_excel: Creates all the res/values-xx structure and strings.xml (or strings*.xml) files from an MS Excel book. For those not using **xliff** or **gettext**...
 
-## XML from Excel (i18n_xml_from_excel.py)
-
-Create full directory structure (also lang code suffix) and localised string.xml files for an Android project from an MS Excel file.
-
-Excel file must contain only one sheet (it can contain several sheets, but only the first one will be read) with strings following the next structure:
-
-```text
-------------------------------------------------
-|         |  lang_code_1  |  lang_code_2  |  ...
-------------------------------------------------
-|  key_1  |  translation  |  translation  |  ...
-------------------------------------------------
-|  key_2  |  translation  |  translation  |  ...
-     .            .               .
-     .            .               .
-     .            .               .
-```
-
-An example Excel file could look like:
-
-```text
----------------------------------------------------------
-|               |       en       |      es-rES     |  ...
----------------------------------------------------------
-|  hello_world  |  Hello world!  |  ¡Hola, mundo!  |  ...
----------------------------------------------------------
-|   good_bye    |    Good bye    |      Adiós      |  ...
-        .                .                .
-        .                .                .
-        .                .                .
-```
-
-### Usage
-
-
-`python i18n_xml_from_excel.py -f <input_excel_file> [-c]`
-
-- option **-c**. If used, strings will be 'cleaned' before writing them to the XML file. See function `getCleanString` in code for further info.
-
-## Excel from XML
+## Excel from XML (i18n_excel_from_xml.py)
 
 Builds an MS Excel sheet with all the strings defined in every strings.xml file from an Android project separated in columns.
 
-Excel output file will follow the next structure:
+Excel created will contain as many sheets as strings*.xml files there are in the project following the following structure
 
 ```text
 ------------------------------------------------
@@ -58,12 +21,11 @@ Excel output file will follow the next structure:
      .            .               .
      .            .               .
 ```
-
-An example sheet could look like:
+An example Excel file could look like:
 
 ```text
 ---------------------------------------------------------
-|               |       en       |      es-rES     |  ...
+|     keys      |       en       |      es-rES     |  ...
 ---------------------------------------------------------
 |  hello_world  |  Hello world!  |  ¡Hola, mundo!  |  ...
 ---------------------------------------------------------
@@ -73,9 +35,78 @@ An example sheet could look like:
         .                .                .
 ```
 
+In case of having a plural of the form:
+
+```text
+<plurals name="example_day">
+	<item quantity="one">1 day</item>
+	<item quantity="other">%1$d days</item>
+</plurals>
+```
+The script produces two rows in the sheet:
+
+```text
+--------------------------------------------------------------------
+|         	keys			 |  lang_code_1  |  lang_code_2  |  ...
+--------------------------------------------------------------------
+|  plural:example_day:one    |  translation  |  translation  |  ...
+--------------------------------------------------------------------
+|  plural:example_day:other  |  translation  |  translation  |  ...
+```
+**NOTE:** The script only takes plurals that have items **one** and **other** 
+
+### Usage
+
+`python i18n_excel_from_xml.py -d <android_project_root_directory> -o <output_excel_file_name>`
+
+## XML from Excel (i18n_xml_from_excel.py)
+
+Create full directory structure (also lang code suffix) and localised strings.xml files (or strings*.xml files) for an Android project from an MS Excel file.
+
+Excel file must contain as many sheets as strings*.xml files you need per each language (each sheet also named strings*.xml) with strings following the next structure:
+
+```text
+------------------------------------------------
+|   keys  |  lang_code_1  |  lang_code_2  |  ...
+------------------------------------------------
+|  key_1  |  translation  |  translation  |  ...
+------------------------------------------------
+|  key_2  |  translation  |  translation  |  ...
+     .            .               .
+     .            .               .
+     .            .               .
+```	 
+In the case of having a plural:
+
+```text
+--------------------------------------------------------------------
+|         	keys			|  lang_code_1  |  lang_code_2  |  ...
+--------------------------------------------------------------------
+|  plural:key_plural:one    |  translation  |  translation  |  ...
+--------------------------------------------------------------------
+|  plural:key_plural:other  |  translation  |  translation  |  ...
+```
+	 
+An example Excel file could look like:
+
+---------------------------------------------------------
+|       keys       	|       en       |      es-rES     |  ...
+---------------------------------------------------------
+|    hello_world  	|  Hello world!  |  ¡Hola, mundo!  |  ...
+---------------------------------------------------------
+|     good_bye    	|    Good bye    |      Adiós      |  ...
+---------------------------------------------------------
+|  plural:days:one  |     1 day  	 |  	1 día	   |  ...
+---------------------------------------------------------
+|  plural:days:one  |   %1$d days    |    %1$d días    |  ...
+        .                .                .
+        .                .                .
+        .                .                .
 ### Usage
 
-`i18n_excel_from_android.py -d <android_project_root_directory> -o <output_excel_file_name>`
+'python i18n_xml_from_excel.py -f <input_excel_file> [-c]'
+
+- option **-c**. If used, strings will be 'cleaned' before writing them to the XML file. See function getCleanString in code for further info.
 
 ## Dependencies
 
