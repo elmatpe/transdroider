@@ -88,7 +88,7 @@ In the case of having a plural:
 ```
 	 
 An example Excel file could look like:
-
+```text
 ---------------------------------------------------------
 |       keys       	|       en       |      es-rES     |  ...
 ---------------------------------------------------------
@@ -102,6 +102,8 @@ An example Excel file could look like:
         .                .                .
         .                .                .
         .                .                .
+```
+		
 ### Usage
 
 'python i18n_xml_from_excel.py -f <input_excel_file> [-c]'
