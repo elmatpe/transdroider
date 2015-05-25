@@ -2,13 +2,13 @@
 
 A couple of **Python** scripts: 
 i18n_excel_from_xml: creats an **MS Excel** book from every strings.xml file in your Android project. In case of having more than one strings file in your project they have to be named strings\*.xml for the script to recognize them. 
-i18n_xml_from_excel: Creates all the res/values-xx structure and strings.xml (or strings*.xml) files from an MS Excel book. For those not using **xliff** or **gettext**...
+i18n_xml_from_excel: Creates all the res/values-xx structure and strings.xml (or strings\*.xml) files from an MS Excel book. For those not using **xliff** or **gettext**...
 
 ## Excel from XML (i18n_excel_from_xml.py)
 
 Builds an MS Excel sheet with all the strings defined in every strings.xml file from an Android project separated in columns.
 
-Excel created will contain as many sheets as strings*.xml files there are in the project following the following structure
+Excel created will contain as many sheets as strings\*.xml files there are in the project following the following structure
 
 ```text
 ------------------------------------------------
@@ -63,7 +63,7 @@ The script produces two rows in the sheet:
 
 Create full directory structure (also lang code suffix) and localised strings.xml files (or strings*.xml files) for an Android project from an MS Excel file.
 
-Excel file must contain as many sheets as strings*.xml files you need per each language (each sheet also named strings*.xml) with strings following the next structure:
+Excel file must contain as many sheets as strings\*.xml files you need per each language (each sheet also named strings\*.xml) with strings following the next structure:
 
 ```text
 ------------------------------------------------
@@ -117,6 +117,7 @@ An example Excel file could look like:
 ## Developed by
 
 Miguel Barrios - mbarrben@gmail.com
+Elena Martínez - emlmartlopez@gmail.com (last changes)
 
 ## License
 
