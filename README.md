@@ -96,7 +96,7 @@ An example Excel file could look like:
 ----------------------------------------------------------------
 |      good_bye    	  |    Good bye    |      Adiós      |  ...
 ----------------------------------------------------------------
-|   plural:days:one   |     1 day  	   |  	  1 día		 |  ...
+|   plural:days:one   |     1 day  	   |   	 1 día	     |  ...
 ----------------------------------------------------------------
 |  plural:days:other  |   %1$d days    |    %1$d días    |  ...
         .                .                .
@@ -118,8 +118,8 @@ An example Excel file could look like:
 
 ## Developed by
 
-Miguel Barrios - mbarrben@gmail.com
-Elena Martínez - emlmartlopez@gmail.com (last changes)
+* Miguel Barrios - mbarrben@gmail.com
+* Elena Martínez - emlmartlopez@gmail.com (last changes)
 
 ## License
 
