@@ -1,7 +1,7 @@
 # Transdroider
 
 A couple of **Python** scripts: 
-i18n_excel_from_xml: creats an **MS Excel** book from every strings.xml file in your Android project. In case of having more than one strings file in your project they have to be named strings*.xml for the script to recognize them. 
+i18n_excel_from_xml: creats an **MS Excel** book from every strings.xml file in your Android project. In case of having more than one strings file in your project they have to be named strings\*.xml for the script to recognize them. 
 i18n_xml_from_excel: Creates all the res/values-xx structure and strings.xml (or strings*.xml) files from an MS Excel book. For those not using **xliff** or **gettext**...
 
 ## Excel from XML (i18n_excel_from_xml.py)
